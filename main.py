@@ -4,11 +4,10 @@ from plot import plotHeatMap
 from saveMatrixes import saveMatrix
 import time
 
-
 start_time = time.time()
 # Defining constants and variables
 max_variation = 1000
-TOLERANCE = 1e-5
+TOLERANCE = 0.1
 iteration = 1
 
 # Getting mesh, Fourrier constant and number of cells on each direction
@@ -24,8 +23,7 @@ while max_variation > TOLERANCE:
 
 
 end_time = time.time()
-total_time = end_time - start_time
+total_time = (end_time - start_time)/60
+print("Execution time (minutes):", round(total_time, 2))
 # Ploting final mesh
 plotHeatMap(mesh, nodes, iteration)
-print("Execution time (seconds):", round(total_time, 2))
-# print("Press ctrl + c to exit programm.")

@@ -10,5 +10,4 @@ def fixMesh(mesh, nodes):
 
 
 def saveMatrix(mesh, nodes, iteration):
-    with open('outputs/'+str(iteration)+'.txt', 'w') as file:
-        file.write(str(np.matrix(fixMesh(mesh, nodes))))
+    np.savetxt(f'outputs/'+str(iteration)+'.txt', fixMesh(mesh, nodes))
