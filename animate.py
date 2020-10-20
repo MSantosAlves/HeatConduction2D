@@ -14,7 +14,7 @@ def readOutputs(iteration):
 
 
 def createFrame(iteration):
-    axes.imshow(animationData[iteration], cmap='hot_r', interpolation='nearest',
+    axis.imshow(animationData[iteration], cmap='hot_r', interpolation='nearest',
                 vmin=0, vmax=100, extent=[0, 3, 0, 3])
 
 
@@ -23,14 +23,16 @@ start_time = time.time()
 
 # Def consts and variables
 OUTPUTS_FOLDER = 'outputs'
-totalOutputs = 0
+totalOutputs = 0,
 animationData = []
-numberOfSeconds = int(input("Please enter the desired number of seconds:\n"))
 
-# Getting number of iterations
+# Getting number of iterations and animations seconds
 for base, dirs, files in os.walk(OUTPUTS_FOLDER):
     for Files in files:
         totalOutputs += 1
+
+numberOfSeconds = int(input("The number of outputs is " + str(totalOutputs) +
+                            ", please enter the desired number of seconds:\n"))
 
 # Saving all data needed to create animation
 for i in range(totalOutputs):
@@ -38,14 +40,14 @@ for i in range(totalOutputs):
 
 
 # Matplotlib animation configs
-fig, axes = plt.subplots()
+fig, axis = plt.subplots()
 
-axes.set(title="Distribuição de temperatura ao longo do tempo",
+axis.set(title="Distribuição de temperatura ao longo do tempo",
          xlabel="X", ylabel="Y")
 
-axesImg = axes.imshow(animationData[0], cmap='hot_r', interpolation='nearest', vmin=0, vmax=100,
+axisImg = axis.imshow(animationData[0], cmap='hot_r', interpolation='nearest', vmin=0, vmax=100,
                       extent=[0, 3, 0, 3])
-fig.colorbar(axesImg, label="Temperatura (K)")
+fig.colorbar(axisImg, label="Temperatura (K)")
 
 # Creating and saving animation
 animatedVideo = FuncAnimation(fig, createFrame, frames=totalOutputs)
@@ -53,5 +55,4 @@ animatedVideo.save("animation.mp4", fps=(totalOutputs/numberOfSeconds))
 
 # Execution time
 end_time = time.time()
-total_time = ((end_time - start_time)/60)
-print("Execution time (minutes):", round(total_time, 2))
+print("Execution time (minutes):", round(end_time - start_time, 5))

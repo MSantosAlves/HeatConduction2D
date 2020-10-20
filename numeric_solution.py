@@ -2,7 +2,7 @@ import math
 import copy
 
 
-# Calculating temperature in node at instant t0
+# Calculating temperature in node at instant t
 def newNodeTemperature(mesh, posX, posY, fourrier0):
     node_temperature = fourrier0*(
         mesh[posX + 1][posY] + mesh[posX - 1][posY] + mesh[posX][posY + 1] + mesh[posX][posY - 1])+(1 - 4*fourrier0)*mesh[posX][posY]
