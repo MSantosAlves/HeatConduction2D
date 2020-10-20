@@ -10,6 +10,7 @@ start_time = time.time()
 max_variation = 1000
 TOLERANCE = 0.1
 iteration = 1
+positionY = 0
 
 # Getting mesh, Fourrier constant and number of cells on each direction
 mesh, FOURRIER_NUMBER, nodes = createMesh()
@@ -17,7 +18,7 @@ mesh, FOURRIER_NUMBER, nodes = createMesh()
 nb_plots = int(
     input("Please enter the desired number of temperature profiles:\n"))
 plotPass = round(3/nb_plots, 1)
-positionY = plotPass
+
 
 # Iterating mesh using contour conditions
 while max_variation > TOLERANCE:

@@ -3,21 +3,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Data for plotting time x n graphic
-# with open('timeXn.txt') as f:
-#     lines = f.readlines()
-#     t = [line.split()[0] for line in lines]
-#     n = [line.split()[1] for line in lines]
+with open('timeXn.txt') as f:
+    lines = f.readlines()
+    t = [line.split()[0] for line in lines]
+    n = [line.split()[1] for line in lines]
 
-# fig, ax = plt.subplots()
-# ax.plot(t, n)
+fig, ax = plt.subplots()
+ax.plot(t, n)
 
-# ax.set(xlabel='Número de nós (n)', ylabel='Tempo de execução (s)',
-#        title='Tempo computacional')
-# ax.grid()
+ax.set(xlabel='Número de nós (n)', ylabel='Tempo de execução (s)',
+       title='Tempo computacional')
+ax.grid()
 
-# fig.savefig("timeXn.png")
-# print("Press ctrl + c to exit.")
-# plt.show()
+fig.savefig("timeXn.png")
 
 
 def plotTemperatureProfile(mesh, posY, nodes):
